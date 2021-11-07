@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <h1>Users</h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                </tr>
+                {% for brand in brands %}
+                <tr>
+                    <td><a href="/brands/{{ brand.id }}"> {{brand.name}} </a></td>
+                </tr>
+                {% endfor %}
+            </table>
+    {% endblock %}
