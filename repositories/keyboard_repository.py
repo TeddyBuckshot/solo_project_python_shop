@@ -4,7 +4,14 @@ from models.keyboard import Keyboard
 
 def save(keyboard):
     sql = "INSERT INTO keyboards (name, brand_id, description, current_stock, cost_price, sale_price) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [keyboard.name]
+    values = [
+        keyboard.name,
+        keyboard.brand.id,
+        keyboard.description,
+        keyboard.current_stock,
+        keyboard.cost_price,
+        keyboard.sale_price
+        ]
     results = run_sql(sql, values)
     id = results[0]["id"]
     keyboard.id = id

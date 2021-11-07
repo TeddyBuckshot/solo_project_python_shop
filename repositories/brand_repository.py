@@ -4,7 +4,7 @@ from models.keyboard import Keyboard
 
 def save(brand):
     sql = "INSERT INTO brands (name, origin) VALUES (%s, %s) RETURNING *"
-    values = [brand.name]
+    values = [brand.name, brand.origin]
     results = run_sql(sql, values)
     id = results[0]["id"]
     brand.id = id
