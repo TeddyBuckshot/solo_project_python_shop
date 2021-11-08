@@ -4,7 +4,10 @@ from models.keyboard import Keyboard
 
 def save(brand):
     sql = "INSERT INTO brands (name, origin) VALUES (%s, %s) RETURNING *"
-    values = [brand.name, brand.origin]
+    values = [
+        brand.name, 
+        brand.origin
+        ]
     results = run_sql(sql, values)
     id = results[0]["id"]
     brand.id = id
@@ -56,7 +59,7 @@ def delete_all():
 
 def get_all_keyboards(brand):
     keyboards = []
-    sql = "SELECT * FROM keyboards WHERE user_id = %s"
+    sql = "SELECT * FROM keyboards WHERE brand_id = %s"
     values = [brand.id]
     results = run_sql(sql, values)
     for row in results:

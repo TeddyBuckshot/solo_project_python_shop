@@ -3,8 +3,8 @@
         <h1> {{brand.name}} </h1>
         <h3>Products:</h3>
         <ul>
-            {% for product in keyboards %}
-                <li>{{product.name}}</li>
+            {% for keyboard in keyboards %}
+                <li> {{keyboard.name}} </li>
             {% endfor %}
         </ul>
     {% endblock %}
