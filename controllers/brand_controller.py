@@ -9,7 +9,7 @@ def brands():
     return render_template("brands/view-brands.html", brands = brands)
 
 @brand_blueprint.route("/brands/<id>")
-def show(id):
+def show_products(id):
     brand = brand_repository.select(id)
     keyboards = brand_repository.get_all_keyboards(brand)
     return render_template("brands/view-products.html", brand=brand, keyboards=keyboards)

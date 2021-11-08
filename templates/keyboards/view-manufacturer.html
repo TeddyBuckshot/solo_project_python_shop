@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <h1> {{keyboard.name}} </h1>
+        <h3>Products:</h3>
+        <ul>
+            {% for brand in brands %}
+                <li> {{brand.name}} </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}

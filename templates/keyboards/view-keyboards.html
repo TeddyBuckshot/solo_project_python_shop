@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <h1>Users</h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                </tr>
+                {% for board in keyboards %}
+                <tr>
+                    <td><a href="/keyboards/{{ board.id }}"> {{board.name}} </a></td>
+                </tr>
+                {% endfor %}
+            </table>
+    {% endblock %}
