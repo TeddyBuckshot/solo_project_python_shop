@@ -37,7 +37,7 @@ def select(id):
 
 def select_all():
     brands = []
-    sql = "SELECT * FROM brands"
+    sql = "SELECT * FROM brands ORDER BY id"
     results = run_sql(sql)
     for row in results:
         brand = Brand(

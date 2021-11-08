@@ -1,4 +1,5 @@
 from flask import Flask, render_template, Blueprint, request, redirect
+from models.brand import Brand
 from models.keyboard import Keyboard
 import repositories.keyboard_repository as keyboard_repository
 

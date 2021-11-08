@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
     {% block content %}
+    <style>
+        #collumn-allign {
+            text-align: center;
+        }
+        #name-allign{
+            text-align: start;
+        }
+        #new-brand{
+            text-align: left;
+            color: goldenrod;
+        }
+
+    </style>
         <h1>Shop by brand:</h1>
             <table>
                 <tr>
-                    <th>Name</th>
+                    <th style="width:200px" >Name</th>
+                    <th style="width:100px">Origin</th>
+                    <th style="width:100px">Edit</th>
                 </tr>
                 {% for brand in brands %}
                 <tr>
-                    <td><a href="/brands/{{ brand.id }}"> {{brand.name}} </a></td>
+                    <td id="name-allign"><a href="/brands/{{ brand.id }}"> {{brand.name}} </a></td>
+                    <td id="collumn-allign">{{brand.origin}}</td>
+                          <!-- &nbsp;  -->
+                    <td id="collumn-allign"><a href="/brands/{{ brand.id }}/edit"> edit brand</a></td>
                 </tr>
-                <tr><td>Country of origin: {{brand.origin}} </td></tr>
                 {% endfor %}
             </table>
+        <footer>
+            <ul>
+                <li><a id="new-brand" href="/brands/new"> add a new brand</a></li>
+            </ul>
+        </footer>
     {% endblock %}
