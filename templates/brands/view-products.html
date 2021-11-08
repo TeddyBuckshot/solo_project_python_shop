@@ -4,7 +4,7 @@
         <h3>Products:</h3>
         <ul>
             {% for keyboard in keyboards %}
-                <li> {{keyboard.name}} </li>
+                <li><a href="/keyboards/{{ keyboard.id }}"> {{keyboard.name}} </a></li>
             {% endfor %}
         </ul>
     {% endblock %}

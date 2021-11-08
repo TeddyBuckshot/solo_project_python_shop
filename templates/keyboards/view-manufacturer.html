@@ -4,7 +4,7 @@
         <h3>Brand:</h3>
         <ul>
             {% for brand in brands %}
-                <li> {{brand.name}} </li>
+                <li><a href="/brands/{{ brand.id }}"> {{brand.name}} </a></li>
             {% endfor %}
         </ul>
     {% endblock %}

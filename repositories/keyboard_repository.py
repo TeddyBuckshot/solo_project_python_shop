@@ -80,7 +80,7 @@ def delete_all():
 def get_brand(keyboard):
     brands = []
     sql = "SELECT * FROM brands WHERE id = %s"
-    values = [keyboard.id]
+    values = [keyboard.brand.id]
     results = run_sql(sql, values)
     for row in results:
         brand = Brand(
