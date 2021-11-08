@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
     {% block content %}
-        <h1>Users</h1>
+        <h1>Shop by brand:</h1>
             <table>
                 <tr>
                     <th>Name</th>
@@ -9,6 +9,7 @@
                 <tr>
                     <td><a href="/brands/{{ brand.id }}"> {{brand.name}} </a></td>
                 </tr>
+                <tr><td>Country of origin: {{brand.origin}} </td></tr>
                 {% endfor %}
             </table>
     {% endblock %}

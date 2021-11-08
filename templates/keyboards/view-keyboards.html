@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
     {% block content %}
-        <h1>Users</h1>
+        <h1>Shop by Keyboard: </h1>
             <table>
                 <tr>
                     <th>Name</th>
@@ -9,6 +9,11 @@
                 <tr>
                     <td><a href="/keyboards/{{ board.id }}"> {{board.name}} </a></td>
                 </tr>
+                <tr><td><!-- <td> {{board.brand}} </td> --></td></tr>
+                <tr><td>Description: {{board.description}} </td></tr>
+                <tr><td>Amount currently in stock: {{board.current_stock}} </td></tr>
+                <tr><td>Cost to buy: {{board.cost_price}} </td></tr>
+                <tr><td>Price sold at: {{board.sale_price}} </td></tr>
                 {% endfor %}
             </table>
     {% endblock %}
