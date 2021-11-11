@@ -41,13 +41,10 @@ def update_brand(id):
     origin = request.form["origin"]
     brand = brand_repository.select(id)
     brand_active = None
-   
     if "active" in request.form:
-        brand_active = False
-       
+        brand_active = False 
     elif "inactive" in request.form:
         brand_active = True
-
     elif brand_active is None:
         brand_active = brand_repository.is_brand_active(brand)
 

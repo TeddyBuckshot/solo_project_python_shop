@@ -2,14 +2,17 @@
 from db.run_sql import run_sql
 from models.brand import Brand
 from models.keyboard import Keyboard
+from models.category import Category
 import repositories.brand_repository as brand_repository
+import repositories.category_repository as category_repository
 
 def save(keyboard):
-    sql = "INSERT INTO keyboards (name, brand_id, description, current_stock, cost_price, sale_price) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO keyboards (name, brand_id, description, category_id, current_stock, cost_price, sale_price) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
     values = [
         keyboard.name,
         keyboard.brand.id,
         keyboard.description,
+        keyboard.category.id,
         keyboard.current_stock,
         keyboard.cost_price,
         keyboard.sale_price
@@ -39,10 +42,12 @@ def select(id):
     results = run_sql(sql, values)[0]
     if results is not None:
         brand = brand_repository.select(results['brand_id'])
+        category = category_repository.select(results['category_id'])
         keyboard = Keyboard(
             results['name'], 
             brand, 
             results['description'], 
+            category,
             results['current_stock'], 
             results['cost_price'], 
             results['sale_price'], 
@@ -56,10 +61,12 @@ def select_all():
     results = run_sql(sql)
     for row in results:
         brand = brand_repository.select(row['brand_id'])
+        category = category_repository.select(row['category_id'])
         keyboard = Keyboard(
             row['name'], 
             brand, 
-            row['description'], 
+            row['description'],
+            category,
             row['current_stock'], 
             row['cost_price'], 
             row['sale_price'], 

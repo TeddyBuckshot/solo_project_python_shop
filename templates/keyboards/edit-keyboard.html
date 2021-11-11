@@ -5,19 +5,12 @@
 
 <form action="/keyboards/{{ keyboard.id }}" method="POST">
     <div>
-        <label for="brand">Brand</label>
-        <select name="brand_id" id="brand">
+        <label for="brand"> Brand:</label>
             {% for brand in brands %}
-            {% if brand.active == true %}
-            <option value="{{ brand.id }}" 
-            {% if brand.id == keyboard.brand.id %} 
-                selected 
-            {% endif %}>
+            {% if brand.id == keyboard.brand.id %}
                 {{ brand.name }}
-            </option>
             {% endif %}
             {% endfor %}
-        </select>
     </div>
     <div>
         <label for="name">Name:</label>
@@ -26,6 +19,16 @@
     <div>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" value="{{ keyboard.description }}">
+    </div>
+    <div>
+        <label for="category">Category: </label>
+        <select name="category" id="category">
+            {% for category in categories %}
+            <option value="{{ category.id }}">
+                {{ category.name }}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <label for="current_stock">Current Stock:</label>

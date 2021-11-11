@@ -11,6 +11,7 @@
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Item Description</th>
+                    <th>Category</th>
                     <th>Current Stock</th>
                     <th>Cost Price</th>
                     <th>Sale Price</th>
@@ -22,6 +23,7 @@
                     <td> {{board.name}} </a></td>
                     <td> <a href="/keyboards/{{ board.brand.id }}"> {{board.brand.name}} </a> </td>
                     <td> {{board.description}} </td>
+                    <td> {{board.category.name}} </td>
                     {% if board.current_stock > 5 %}
                     <td class="column-allign" style="color:green"> {{board.current_stock}} high stock</td>
                     {% else %}
