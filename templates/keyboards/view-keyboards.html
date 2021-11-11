@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
     {% block content %}
+    <style>
+        .column-allign{
+            text-align: center;
+        }
+    </style>
         <h1>Shop by Keyboard: </h1>
             <table>
                 <tr>
                     <th>Name</th>
+                    <th>Brand</th>
+                    <th>Item Description</th>
+                    <th>Current Stock</th>
+                    <th>Cost Price</th>
+                    <th>Sale Price</th>
+                    <th>Edit</th>
                 </tr>
                 {% for board in keyboards %}
-                <tr>
+                <tr class="table">
                     <td><a href="/keyboards/{{ board.id }}"> {{board.name}} </a></td>
+                    <td> {{board.brand.name}} </td>
+                    <td> {{board.description}} </td>
+                    {% if board.current_stock > 5 %}
+                    <td class="column-allign" style="color:green"> {{board.current_stock}} high stock</td>
+                    {% else %}
+                    <td class="column-allign" style="color:red"> {{board.current_stock}} low stock</td>
+                    {% endif %}
+                    <td class="column-allign"> {{board.cost_price}} </td>
+                    <td class="column-allign"> {{board.sale_price}} </td>
+                    <td class="column-allign"><a href="/keyboards/{{ board.id }}/edit"> edit keyboard</a></td>
                 </tr>
-                <tr><td><!-- <td> {{board.brand}} </td> --></td></tr>
-                <tr><td>Description: {{board.description}} </td></tr>
-                <tr><td>Amount currently in stock: {{board.current_stock}} </td></tr>
-                <tr><td>Cost to buy: {{board.cost_price}} </td></tr>
-                <tr><td>Price sold at: {{board.sale_price}} </td></tr>
                 {% endfor %}
             </table>
+
+            <footer>
+                <ul>
+                    <li><a id="new-keyboard" href="/keyboards/new"> add a new keyboard</a></li>
+                </ul>
+            </footer>
     {% endblock %}

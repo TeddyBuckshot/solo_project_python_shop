@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Update Keyboard</h2>
+
+<form action="/keyboards/{{ keyboard.id }}" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ keyboard.name }}">
+    </div>
+    <div>
+        <label for="brand">Brand</label>
+        <select name="brand_id" id="brand">
+            {% for brand in brands %}
+            <option value="{{ brand.id }}" {% if brand.id == keyboard.brand.id %} selected {% endif %}>
+                {{ brand.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="{{ keyboard.description }}">
+    </div>
+    <div>
+        <label for="current_stock">Current Stock:</label>
+        <input type="text" id="current_stock" name="current_stock" value="{{ keyboard.current_stock }}">
+    </div>
+    <div>
+        <label for="cost_price">Cost to buy:</label>
+        <input type="text" id="cost_price" name="cost_price" value="{{ keyboard.cost_price }}">
+    </div>
+    <div>
+        <label for="sale_price">Price sold at:</label>
+        <input type="text" id="sale_price" name="sale_price" value="{{ keyboard.sale_price }}">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}

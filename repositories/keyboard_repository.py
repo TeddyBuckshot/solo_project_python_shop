@@ -51,7 +51,7 @@ def select(id):
 
 def select_all():
     keyboards = []
-    sql = "SELECT * FROM keyboards"
+    sql = "SELECT * FROM keyboards ORDER BY brand_id"
     results = run_sql(sql)
     for row in results:
         brand = brand_repository.select(row['brand_id'])
@@ -68,12 +68,12 @@ def select_all():
     return keyboards
 
 def delete(id):
-    sql = "DELETE FROM brands WHERE id = %s"
+    sql = "DELETE FROM keyboards WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
 def delete_all():
-    sql = "DELETE FROM brands"
+    sql = "DELETE FROM keyboards"
     run_sql(sql)
 
 
