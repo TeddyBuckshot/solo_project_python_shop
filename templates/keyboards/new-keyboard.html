@@ -8,9 +8,11 @@
         <label for="brand"> Brand:</label>
         <select name="brand" id="brand">
             {% for brand in brands %}
+            {% if brand.active == true %}
             <option value="{{ brand.id }}">
                 {{ brand.name }}
             </option>
+            {% endif %}
             {% endfor %}
         </select>
     </div>

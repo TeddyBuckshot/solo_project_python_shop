@@ -18,12 +18,14 @@
                 <tr>
                     <th style="width:200px" >Name</th>
                     <th style="width:100px">Origin</th>
+                    <th style="width:100px">Active</th>
                     <th style="width:100px">Edit</th>
                 </tr>
                 {% for brand in brands %}
                 <tr>
                     <td id="name-allign"><a href="/keyboards/{{ brand.id }}"> {{brand.name}} </a></td>
                     <td id="collumn-allign">{{brand.origin}}</td>
+                    <td id="collumn-allign">{{brand.active}}</td>
                           <!-- &nbsp;  -->
                     <td id="collumn-allign"><a href="/brands/{{ brand.id }}/edit"> edit brand</a></td>
                 </tr>

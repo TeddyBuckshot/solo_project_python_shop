@@ -12,6 +12,17 @@
         <label for="origin">Origin: </label>
         <input type="text" name="origin" id="origin" value="{{ brand.origin }}">
     </div>
+    {% if brand.active == true %}
+    <div>
+        <label for="active">Deactivate?</label>
+        <input type="checkbox" name="active" id="active" value="{{ brand.active }}">
+    </div>  
+    {% else %}
+    <div >
+        <label for="inactive">Reactivate?</label>
+        <input type="checkbox" name="inactive" id="inactive" value="{{ brand.active }}">   
+    </div>
+    {% endif %}
     <div>
         <input type="submit">
     </div>

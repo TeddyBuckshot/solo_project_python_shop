@@ -8,9 +8,14 @@
         <label for="brand">Brand</label>
         <select name="brand_id" id="brand">
             {% for brand in brands %}
-            <option value="{{ brand.id }}" {% if brand.id == keyboard.brand.id %} selected {% endif %}>
+            {% if brand.active == true %}
+            <option value="{{ brand.id }}" 
+            {% if brand.id == keyboard.brand.id %} 
+                selected 
+            {% endif %}>
                 {{ brand.name }}
             </option>
+            {% endif %}
             {% endfor %}
         </select>
     </div>

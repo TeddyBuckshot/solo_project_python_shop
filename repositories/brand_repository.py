@@ -1,12 +1,14 @@
+import pdb 
 from db.run_sql import run_sql
 from models.brand import Brand
 from models.keyboard import Keyboard
 
 def save(brand):
-    sql = "INSERT INTO brands (name, origin) VALUES (%s, %s) RETURNING *"
+    sql = "INSERT INTO brands (name, origin, active) VALUES (%s, %s, %s) RETURNING *"
     values = [
         brand.name, 
-        brand.origin
+        brand.origin,
+        brand.active
         ]
     results = run_sql(sql, values)
     id = results[0]["id"]
@@ -14,15 +16,17 @@ def save(brand):
     return brand
 
 def update(brand):
-    sql = "UPDATE brands SET (name, origin) = (%s, %s) WHERE id = %s"
+    sql = "UPDATE brands SET (name, origin, active) = (%s, %s, %s) WHERE id = %s"
     values = [
         brand.name,
         brand.origin,
+        brand.active,
         brand.id
         ]
     run_sql(sql, values)
 
 def select(id):
+    # pdb.set_trace()
     brand = None
     sql = "SELECT * FROM brands WHERE id = %s"
     values = [id]
@@ -30,7 +34,8 @@ def select(id):
     if results is not None:
         brand = Brand(
             results['name'], 
-            results['origin'], 
+            results['origin'],
+            results['active'], 
             results['id']
             )
     return brand
@@ -43,6 +48,7 @@ def select_all():
         brand = Brand(
             row['name'], 
             row['origin'], 
+            row['active'],
             row['id']
             )
         brands.append(brand)
@@ -74,3 +80,10 @@ def get_all_keyboards(brand):
             )
         keyboards.append(keyboard)
     return keyboards
+
+def is_brand_active(brand):
+    if brand.active == True:
+        return True
+    elif brand.active == False:
+        return False
+

@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS brands;
 CREATE TABLE brands (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    origin VARCHAR(255)
+    origin VARCHAR(255),
+    active BOOLEAN
 );
 
 CREATE TABLE keyboards (
