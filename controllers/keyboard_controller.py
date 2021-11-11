@@ -1,5 +1,4 @@
 from flask import Flask, render_template, Blueprint, request, redirect
-from models.brand import Brand
 from models.keyboard import Keyboard
 import repositories.keyboard_repository as keyboard_repository
 import repositories.brand_repository as brand_repository
@@ -12,7 +11,6 @@ keyboard_blueprint = Blueprint("keyboards", __name__)
 def show_keyboards():
     keyboards = keyboard_repository.select_all()
     return render_template("keyboards/view-keyboards.html", keyboards=keyboards)
-
 
 @keyboard_blueprint.route("/keyboards/<id>")
 def show_by_brand(id):

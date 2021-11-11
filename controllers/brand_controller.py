@@ -5,15 +5,15 @@ import repositories.brand_repository as brand_repository
 brand_blueprint = Blueprint("brands", __name__)
 
 @brand_blueprint.route("/brands")
-def brands():
+def show_brands():
     brands = brand_repository.select_all()
     return render_template("brands/view-brands.html", brands = brands)
 
-@brand_blueprint.route("/brands/<id>")
-def show_products(id):
-    brand = brand_repository.select(id)
-    keyboards = brand_repository.get_all_keyboards(brand)
-    return render_template("brands/view-products.html", brand=brand, keyboards=keyboards)
+# @brand_blueprint.route("/brands/<id>")
+# def show_products(id):
+#     brand = brand_repository.select(id)
+#     keyboards = brand_repository.get_all_keyboards(brand)
+#     return render_template("brands/view-products.html", brand=brand, keyboards=keyboards)
 
 @brand_blueprint.route("/brands/new")
 def new_brand():
