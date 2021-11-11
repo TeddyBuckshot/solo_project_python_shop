@@ -14,6 +14,7 @@
                     <th>Current Stock</th>
                     <th>Cost Price</th>
                     <th>Sale Price</th>
+                    <th>Mark up on item</th>
                     <th>Edit</th>
                 </tr>
                 {% for board in keyboards %}
@@ -28,6 +29,7 @@
                     {% endif %}
                     <td class="column-allign"> {{board.cost_price}} </td>
                     <td class="column-allign"> {{board.sale_price}} </td>
+                    <td>{{ (((board.sale_price - board.cost_price)/board.cost_price)*100) | round(0, 'ceil') }}% </td>
                     <td class="column-allign"><a href="/keyboards/{{ board.id }}/edit"> edit keyboard</a></td>
                 </tr>
                 {% endfor %}
