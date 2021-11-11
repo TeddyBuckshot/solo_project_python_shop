@@ -19,8 +19,8 @@
                 </tr>
                 {% for board in keyboards %}
                 <tr class="table">
-                    <td><a href="/keyboards/{{ board.id }}"> {{board.name}} </a></td>
-                    <td> {{board.brand.name}} </td>
+                    <td> {{board.name}} </a></td>
+                    <td> <a href="/keyboards/{{ board.brand.id }}"> {{board.brand.name}} </a> </td>
                     <td> {{board.description}} </td>
                     {% if board.current_stock > 5 %}
                     <td class="column-allign" style="color:green"> {{board.current_stock}} high stock</td>

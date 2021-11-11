@@ -1,3 +1,4 @@
+
 from db.run_sql import run_sql
 from models.brand import Brand
 from models.keyboard import Keyboard
@@ -67,6 +68,25 @@ def select_all():
         keyboards.append(keyboard)
     return keyboards
 
+def select_by_brand(id):
+    keyboards = []
+    sql = "SELECT * FROM keyboards WHERE brand_id = %s"
+    values = [id]
+    results = run_sql(sql,values)
+    for row in results:
+        brand = brand_repository.select(row['brand_id'])
+        keyboard = Keyboard(
+            row['name'], 
+            brand, 
+            row['description'], 
+            row['current_stock'], 
+            row['cost_price'], 
+            row['sale_price'], 
+            row['id']
+            )
+        keyboards.append(keyboard)
+    return keyboards
+
 def delete(id):
     sql = "DELETE FROM keyboards WHERE id = %s"
     values = [id]
@@ -77,16 +97,16 @@ def delete_all():
     run_sql(sql)
 
 
-def get_brand(keyboard):
-    brands = []
-    sql = "SELECT * FROM brands WHERE id = %s"
-    values = [keyboard.brand.id]
-    results = run_sql(sql, values)
-    for row in results:
-        brand = Brand(
-            row['name'], 
-            row['origin'], 
-            row['id']
-            )
-        brands.append(brand)
-    return brands
+# def get_brand(keyboard):
+#     brands = []
+#     sql = "SELECT * FROM brands WHERE id = %s"
+#     values = [keyboard.brand.id]
+#     results = run_sql(sql, values)
+#     for row in results:
+#         brand = Brand(
+#             row['name'], 
+#             row['origin'], 
+#             row['id']
+#             )
+#         brands.append(brand)
+#     return brands

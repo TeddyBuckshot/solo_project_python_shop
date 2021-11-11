@@ -9,15 +9,15 @@ keyboard_blueprint = Blueprint("keyboards", __name__)
 
 
 @keyboard_blueprint.route("/keyboards")
-def keyboards():
+def show_keyboards():
     keyboards = keyboard_repository.select_all()
     return render_template("keyboards/view-keyboards.html", keyboards=keyboards)
 
+
 @keyboard_blueprint.route("/keyboards/<id>")
-def show_brands(id):
-    keyboard = keyboard_repository.select(id)
-    brands = keyboard_repository.get_brand(keyboard)
-    return render_template("keyboards/view-manufacturer.html", brands=brands, keyboard=keyboard)
+def show_by_brand(id):
+    keyboards = keyboard_repository.select_by_brand(id)
+    return render_template("keyboards/view-keyboards.html", keyboards=keyboards)
 
 @keyboard_blueprint.route("/keyboards/new")
 def new_keyboard():
