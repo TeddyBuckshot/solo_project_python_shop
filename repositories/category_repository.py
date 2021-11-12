@@ -24,7 +24,6 @@ def select_all():
     return categories
 
 def select(id):
-    # pdb.set_trace()
     category = None
     sql = "SELECT * FROM categories WHERE id = %s"
     values = [id]

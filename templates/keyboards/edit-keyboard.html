@@ -4,13 +4,17 @@
 <h2>Update Keyboard</h2>
 
 <form action="/keyboards/{{ keyboard.id }}" method="POST">
-    <div>
+     <div>
         <label for="brand"> Brand:</label>
+        <select name="brand" id="brand">
             {% for brand in brands %}
-            {% if brand.id == keyboard.brand.id %}
+            {% if brand.id == keyboard.brand.id and brand.active == true %}
+            <option value="{{ brand.id }}">
                 {{ brand.name }}
+            </option>
             {% endif %}
             {% endfor %}
+        </select>
     </div>
     <div>
         <label for="name">Name:</label>

@@ -82,10 +82,12 @@ def select_by_brand(id):
     results = run_sql(sql,values)
     for row in results:
         brand = brand_repository.select(row['brand_id'])
+        category = category_repository.select(row['category_id'])
         keyboard = Keyboard(
             row['name'], 
             brand, 
             row['description'], 
+            category,
             row['current_stock'], 
             row['cost_price'], 
             row['sale_price'], 
