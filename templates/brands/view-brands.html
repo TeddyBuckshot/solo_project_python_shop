@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
     {% block content %}
     <style>
-        #collumn-allign {
-            text-align: center;
-        }
-        #name-allign{
-            text-align: start;
-        }
-        #new-brand{
-            text-align: left;
-            color: goldenrod;
-        }
+       
 
     </style>
-        <h1>Shop by brand:</h1>
+        <h1>View stock by Brand</h1>
+        <button id="add"><a id="new-brand" href="/brands/new">Click here to add a new brand</a></button>
             <table>
                 <tr>
                     <th style="width:200px" >Name</th>
-                    <th style="width:100px">Origin</th>
+                    <th style="width:200px">Origin</th>
                     <th style="width:100px">Active</th>
                     <th style="width:100px">Edit</th>
                 </tr>
@@ -27,13 +19,14 @@
                     <td id="collumn-allign">{{brand.origin}}</td>
                     <td id="collumn-allign">{{brand.active}}</td>
                           <!-- &nbsp;  -->
-                    <td id="collumn-allign"><a href="/brands/{{ brand.id }}/edit"> edit brand</a></td>
+                    <td id="collumn-allign"><button><a href="/brands/{{ brand.id }}/edit">Edit</a></button></td>
                 </tr>
                 {% endfor %}
             </table>
-        <footer>
-            <ul>
-                <li><a id="new-brand" href="/brands/new"> add a new brand</a></li>
-            </ul>
+        <footer id="add-new">
         </footer>
+    {% endblock %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/brand_view_style.css') }}">
     {% endblock %}

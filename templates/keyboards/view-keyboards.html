@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
     {% block content %}
-    <style>
-        .column-allign{
-            text-align: center;
-        }
-    </style>
-        <h1>Shop by Keyboard: </h1>
-            <table>
-                <tr>
+        <h1>View stock by Keyboard</h1>
+        <button id="add"><a href="/keyboards/new"> Click to add a new keyboard</a></button>
+            <table id="keyboard-table">
+                <tr id="table-headers">
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Item Description</th>
@@ -24,22 +20,28 @@
                     <td> <a href="/keyboards/{{ board.brand.id }}"> {{board.brand.name}} </a> </td>
                     <td> {{board.description}} </td>
                     <td> {{board.category.name}} </td>
-                    {% if board.current_stock > 5 %}
-                    <td class="column-allign" style="color:green"> {{board.current_stock}} high stock</td>
+                    {% if board.current_stock == 0 %}
+                    <td class="column-allign" style="color:red"> out of stock </td>
+                    {% elif board.current_stock < 5 %}
+                    <td class="column-allign" style="color:red"> {{board.current_stock}} - low stock </td>
                     {% else %}
-                    <td class="column-allign" style="color:red"> {{board.current_stock}} low stock</td>
+                    <td class="column-allign" style="color:green"> {{board.current_stock}} in stock</td>
                     {% endif %}
                     <td class="column-allign"> {{board.cost_price}} </td>
                     <td class="column-allign"> {{board.sale_price}} </td>
                     <td class="column-allign">{{ (((board.sale_price - board.cost_price)/board.cost_price)*100) | round(0, 'ceil') }}% </td>
-                    <td class="column-allign"><a href="/keyboards/{{ board.id }}/edit"> edit keyboard</a></td>
+                    <td class="column-allign"><button><a href="/keyboards/{{ board.id }}/edit"> Edit</a></button></td>
                 </tr>
                 {% endfor %}
             </table>
 
-            <footer>
-                <ul>
-                    <li><a id="new-keyboard" href="/keyboards/new"> add a new keyboard</a></li>
-                </ul>
+            <footer id="add-new">
+                <div>
+                    
+                </div>
             </footer>
+    {% endblock %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/keyboard_view_style.css') }}">
     {% endblock %}

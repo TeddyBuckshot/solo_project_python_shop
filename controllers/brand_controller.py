@@ -1,6 +1,4 @@
-import pdb
 from flask import Flask, render_template, Blueprint, request, redirect
-from flask.wrappers import Request
 from models.brand import Brand
 import repositories.brand_repository as brand_repository
 

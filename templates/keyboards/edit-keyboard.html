@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Update Keyboard</h2>
-
-<form action="/keyboards/{{ keyboard.id }}" method="POST">
+<h1>Edit keyboard details in database</h1>
+<div id="edit-form">
+<form id="main-form" action="/keyboards/{{ keyboard.id }}" method="POST">
      <div>
         <label for="brand"> Brand:</label>
         <select name="brand" id="brand">
             {% for brand in brands %}
-            {% if brand.id == keyboard.brand.id and brand.active == true %}
+            {% if brand.id == keyboard.brand.id %}
             <option value="{{ brand.id }}">
                 {{ brand.name }}
             </option>
@@ -50,5 +50,10 @@
         <input type="submit">
     </div>
 </form>
+</div>
 
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/edit_form_style.css') }}">
 {% endblock %}

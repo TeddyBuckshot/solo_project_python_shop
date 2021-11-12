@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Add a brand to the database: </h2>
+<h1>Add a new brand to the database: </h1>
 
 <form action="/brands" method="POST">
     <div>
@@ -17,4 +17,8 @@
     </div>
 </form>
 
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/edit_form_style.css') }}">
 {% endblock %}

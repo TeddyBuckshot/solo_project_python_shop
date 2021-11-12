@@ -1,6 +1,12 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h1>SamsKeyboards</h1>
-<p>Welcome to Sams Keyboard Shop</p>
+<body>
+    <h1 id="home-title">SamsKeyboards</h1>
+    <p id="welcome">Please Log-in below: </p>
+</body>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/home_style.css') }}">
 {% endblock %}

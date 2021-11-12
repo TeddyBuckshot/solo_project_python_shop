@@ -1,0 +1,31 @@
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: rgb(212, 255, 208);
+}
+
+#edit-form {
+    border-radius: 5px;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+input[type=checkbox] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+
+}
+
+h1 {
+    text-align:center;
+}

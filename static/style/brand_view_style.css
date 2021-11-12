@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(223, 223, 223);
+}
+th, td {
+    border: 2px solid black;
+    padding: 8px;
+}
+
+#add {
+    margin-left: 0px;
+    margin-bottom: 8px;
+}
+
+#collumn-allign {
+    text-align: center;
+}
+
+h1 {
+    text-align:center;
+}
